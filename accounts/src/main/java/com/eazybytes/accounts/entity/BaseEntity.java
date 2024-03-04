@@ -3,6 +3,7 @@ package com.eazybytes.accounts.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,19 +24,16 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
-    @CreatedDate
-    @Column(updatable = false)
+    @Column( updatable = false)
     private LocalDateTime createdAt;
 
-    @CreatedBy
     @Column(updatable = false)
     private String createdBy;
 
-    @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime updatedAt;
 
-    @LastModifiedBy
     @Column(insertable = false)
     private String updatedBy;
+
 }
