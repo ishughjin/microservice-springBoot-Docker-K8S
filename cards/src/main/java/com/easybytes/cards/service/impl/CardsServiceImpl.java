@@ -31,7 +31,13 @@ public class CardsServiceImpl implements ICardsService {
         newCard.setAmountUsed(0);
         newCard.setAvailableAmount(0);
         return newCard;
+    }
 
+    public CardsDto getCard(String mobileNumber) {
+        CardsEntity card = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(
+
+        );
+        return CardsMapper.mapToCardDto(card, new CardsDto());
     }
 
 

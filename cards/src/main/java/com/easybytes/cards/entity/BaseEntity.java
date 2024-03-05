@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Getter @Setter
-public class BaseEntity {
+public class    BaseEntity {
 
     @Column(updatable = false)
     public LocalDateTime createdAt;

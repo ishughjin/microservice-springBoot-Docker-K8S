@@ -28,4 +28,12 @@ public class CardsController {
                 )
         );
     }
+
+    @GetMapping("/fetch")
+    public ResponseEntity<CardsDto> getCardDetails(@RequestParam String mobileNumber ){
+        CardsDto cardsDto = iCardsService.getCard(mobileNumber) ;
+        return ResponseEntity.status(HttpStatus.OK).body(
+                cardsDto
+        ) ;
+    }
 }
