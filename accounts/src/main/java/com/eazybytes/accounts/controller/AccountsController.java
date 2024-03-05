@@ -5,6 +5,7 @@ import com.eazybytes.accounts.dto.CustomerDto;
 import com.eazybytes.accounts.dto.ResponseDto;
 import com.eazybytes.accounts.service.IAccountsService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,7 +21,7 @@ public class AccountsController {
     private IAccountsService iAccountsService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createAccount( @RequestBody CustomerDto customerDto) {
+    public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
         System.out.println(customerDto.toString());
         iAccountsService.createAccount(customerDto);
 
@@ -58,7 +59,7 @@ public class AccountsController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteAccount(@RequestParam String mobileNumber)  {
+    public ResponseEntity<ResponseDto> deleteAccount(@RequestParam @Pattern(regexp ="(^$|[0-9]{10})", message = "Mobile Number must be 10 Digits ") String mobileNumber)  {
         boolean isDelete = iAccountsService.deleteAccount(mobileNumber);
         if(isDelete) {
             return ResponseEntity.status(HttpStatus.OK).body(

@@ -22,17 +22,22 @@ import java.time.LocalDateTime;
 // 义更加简洁。
 @Getter @Setter @ToString
 @EntityListeners(AuditingEntityListener.class)
+
 public class BaseEntity {
 
+    @CreatedDate //  确保根据插入时间来插入记录的时间
     @Column( updatable = false)
     private LocalDateTime createdAt;
 
+    @CreatedBy
     @Column(updatable = false)
     private String createdBy;
 
+    @LastModifiedDate //  确保根据更新时间来插入记录的时间
     @Column(insertable = false)
     private LocalDateTime updatedAt;
 
+    @LastModifiedBy
     @Column(insertable = false)
     private String updatedBy;
 

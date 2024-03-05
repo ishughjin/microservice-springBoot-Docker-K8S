@@ -43,7 +43,6 @@ public class AccountsServiceImpl  implements IAccountsService {
      */
     private Accounts createNewAccount(Customer customer) {
         Accounts newAccount = new Accounts();
-        System.out.println("2j31j3j");
         newAccount.setCreatedAt(LocalDateTime.now());
         newAccount.setCreatedBy(customer.getCreatedBy());
 

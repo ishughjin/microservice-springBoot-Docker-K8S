@@ -18,8 +18,8 @@ public class CustomerMapper {
         customer.setName(customerDto.getName());
         customer.setEmail(customerDto.getEmail());
         customer.setMobileNumber(customerDto.getMobileNumber());
-        customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy(customerDto.getName());
+//        customer.setCreatedAt(LocalDateTime.now());
+//        customer.setCreatedBy(customerDto.getName());
         return customer;
     }
 
