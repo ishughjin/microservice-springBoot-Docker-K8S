@@ -40,6 +40,21 @@ public class CardsServiceImpl implements ICardsService {
         return CardsMapper.mapToCardDto(card, new CardsDto());
     }
 
+    public CardsDto updateCard(CardsDto cardsDto) {
+        CardsEntity card = cardsRepository.findByCardNumber(cardsDto.getCardNumber()).orElseThrow() ;
+        CardsMapper.mapToCardEntity(cardsDto, card) ;
+        return cardsDto;
+    }
+
+    public boolean deleteCard(String mobileNumber) {
+        CardsEntity card = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow() ;
+
+        cardsRepository.deleteById(card.cardId);
+        return true;
+    }
+
+
+
 
 
 

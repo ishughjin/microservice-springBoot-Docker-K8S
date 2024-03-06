@@ -36,4 +36,18 @@ public class CardsController {
                 cardsDto
         ) ;
     }
+
+    public ResponseEntity<CardsDto> updateCardDetails(@RequestBody CardsDto cardsDto) {
+        CardsDto card = iCardsService.updateCard(cardsDto) ;
+        return ResponseEntity.status(HttpStatus.OK).body(
+                cardsDto
+        ) ;
+    }
+
+
+    @DeleteMapping("/delete")
+    public boolean deleteCard(@RequestParam String mobileNumber) {
+         iCardsService.deleteCard(mobileNumber);
+        return true;
+    }
 }

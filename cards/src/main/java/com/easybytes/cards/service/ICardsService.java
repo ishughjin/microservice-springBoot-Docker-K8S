@@ -6,4 +6,8 @@ public interface ICardsService {
     void createCard(String mobileNumber) ;
 
     CardsDto getCard(String mobileNumber) ;
+
+    CardsDto updateCard(CardsDto cardsDto) ;
+
+    boolean deleteCard(String mobileNumber) ;
 }
