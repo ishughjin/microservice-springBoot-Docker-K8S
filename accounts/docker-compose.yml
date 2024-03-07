@@ -1,0 +1,16 @@
+services:
+  accounts:
+    image: "ishughjin/accounts:s4"
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m # Provide 700 m memories
+
+    networks:
+      - ishughjinbank
+networks :
+  ishughjinbank:
+      driver: : "bridge" # Create a network bridge to communicate with services
