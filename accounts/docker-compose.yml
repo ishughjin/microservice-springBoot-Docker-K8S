@@ -8,9 +8,8 @@ services:
       resources:
         limits:
           memory: 700m # Provide 700 m memories
-
     networks:
       - ishughjinbank
 networks :
   ishughjinbank:
-      driver: : "bridge" # Create a network bridge to communicate with services
+      driver: "bridge" # Create a network bridge to communicate with services
