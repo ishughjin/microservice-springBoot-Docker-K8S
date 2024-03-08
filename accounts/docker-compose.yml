@@ -1,15 +1,37 @@
 services:
   accounts:
-    image: "ishughjin/accounts:s4"
+    image: "eazybytes/accounts:s4"
     container_name: accounts-ms
     ports:
       - "8080:8080"
     deploy:
       resources:
         limits:
-          memory: 700m # Provide 700 m memories
+          memory: 700m
     networks:
-      - ishughjinbank
-networks :
-  ishughjinbank:
-      driver: "bridge" # Create a network bridge to communicate with services
+      - eazybank
+  loans:
+    image: "eazybytes/loans:s4"
+    container_name: loans-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - eazybank
+  cards:
+    image: "eazybytes/cards:s4"
+    container_name: cards-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - eazybank
+networks:
+  eazybank:
+    driver: "bridge"
